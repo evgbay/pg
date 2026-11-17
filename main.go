@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/evgbay/pm/cmd"
-	"github.com/evgbay/pm/model"
+	"github.com/evgbay/pg/cmd"
+	"github.com/evgbay/pg/common"
 )
 
 func main() {
 	cmd.ParseArgs()
-	template := model.NewTemplate(cmd.PasswordLength, cmd.EnableSpecialSymbols)
+	template := common.NewTemplate(cmd.PasswordLength, cmd.EnableSpecialSymbols)
 	fmt.Println(cmd.GeneratePassword(template))
 }
