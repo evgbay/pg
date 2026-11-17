@@ -1,13 +1,13 @@
 package cmd
 
 import (
-	"github.com/evgbay/pm/model"
+	"github.com/evgbay/pg/common"
 	"math/rand"
 	"strings"
 )
 
-func GeneratePassword(template *model.Template) string {
-	chars := model.GetCharset(template)
+func GeneratePassword(template *common.Template) string {
+	chars := common.GetCharset(template)
 	var builder strings.Builder
 	builder.Grow(template.Len)
 	for i := 0; i < template.Len; i++ {

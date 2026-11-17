@@ -1,9 +1,6 @@
-package model
+package common
 
-import (
-	"github.com/evgbay/pm/util"
-	"log"
-)
+import "log"
 
 type Template struct {
 	Len     int
@@ -13,15 +10,15 @@ type Template struct {
 }
 
 func NewTemplate(passwordLength *int, enableSpecialSymbols *bool) *Template {
-	validator := util.NewPasswordValidator(util.MinPasswordLength, util.MaxPasswordLength)
+	validator := NewPasswordValidator(MinPasswordLength, MaxPasswordLength)
 	err := validator.Validate(passwordLength)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 	return &Template{
-		Len:     util.ToValue(passwordLength),
+		Len:     ToValue(passwordLength),
 		Letters: true,
 		Digits:  true,
-		Special: util.ToValue(enableSpecialSymbols),
+		Special: ToValue(enableSpecialSymbols),
 	}
 }
